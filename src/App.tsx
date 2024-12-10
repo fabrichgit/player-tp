@@ -18,34 +18,27 @@ function App() {
         videoElement.src = videoUrl;
         videoElement.currentTime = 1;
 
-        // setMedias(prev => [{name: files.item(i)?.name, url: videoUrl} , ...prev])
-
         videoElement.onloadeddata = () => {
           const canvas = document.createElement("canvas");
-          canvas.width = 200; // Largeur du thumbnail
-          canvas.height = 120; // Hauteur du thumbnail
+          canvas.width = 200;
+          canvas.height = 120;
 
           const ctx = canvas.getContext("2d");
           if (ctx) {
             ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
             const thumbnail = canvas.toDataURL("image/png");
 
-            // previews.push({ file, thumbnail });
-            // setVideos([...videos, ...previews]);
-
             setMedias(prev => [{name: files.item(i)?.name, url: videoUrl, thumbnail: thumbnail} , ...prev])
           }
-
-          URL.revokeObjectURL(videoUrl); // Libérer la mémoire
+          URL.revokeObjectURL(videoUrl);
         };
       })
     }
   }
-console.log(medias);
 
   return (
     <div className='flex gap-4 w-screen h-screen bg-blue-50 overflow-hidden'>
-      <aside className='w-[50%] p-5'>
+      <aside className='w-[80%] p-5'>
         <video className='w-full' controls autoPlay src={url}></video>
       </aside>
 
@@ -60,50 +53,6 @@ console.log(medias);
       </div>
     </div>
   )
-
-  // return (
-  //   <>
-  //  <VideoThumbnail
-  //     videoUrl={url}
-  //     thumbnailHandler={(thumbnail: any) => console.log(thumbnail)}
-  //     width={120}
-  //     height={80}
-  //   />
-
-  //   <input type="file" multiple onChange={change}/>
-  //   <div className="flex gap-4">
-  //     {
-  //       medias?.map(media => (
-  //         <button onClick={() => setUrl(media.url!)}>{media.name}</button>
-  //       ))
-  //     }
-  //   </div>
-  //   {/* <ReactPlayer url={url} /> */}
-  //   <video controls autoPlay src={url}></video>
-  //   </>
-  //   // <>
-  //   //   <div>
-  //   //     <a href="https://vite.dev" target="_blank">
-  //   //       <img src={viteLogo} className="logo" alt="Vite logo" />
-  //   //     </a>
-  //   //     <a href="https://react.dev" target="_blank">
-  //   //       <img src={reactLogo} className="logo react" alt="React logo" />
-  //   //     </a>
-  //   //   </div>
-  //   //   <h1>Vite + React</h1>
-  //   //   <div className="card">
-  //   //     <button onClick={() => setCount((count) => count + 1)}>
-  //   //       count is {count}
-  //   //     </button>
-  //   //     <p>
-  //   //       Edit <code>src/App.tsx</code> and save to test HMR
-  //   //     </p>
-  //   //   </div>
-  //   //   <p className="read-the-docs">
-  //   //     Click on the Vite and React logos to learn more
-  //   //   </p>
-  //   // </>
-  // )
 }
 
 export default App
