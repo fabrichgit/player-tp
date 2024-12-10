@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer";
@@ -54,3 +55,7 @@ app.whenReady().then(() => {
     }
   });
 });
+
+app.disableHardwareAcceleration();
+
+

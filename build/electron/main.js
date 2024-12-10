@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint-disable @typescript-eslint/no-require-imports */
 var electron_1 = require("electron");
 var path = require("path");
 var electron_devtools_installer_1 = require("electron-devtools-installer");
@@ -44,4 +45,5 @@ electron_1.app.whenReady().then(function () {
         }
     });
 });
+electron_1.app.disableHardwareAcceleration();
 //# sourceMappingURL=main.js.map
