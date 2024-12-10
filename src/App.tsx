@@ -1,34 +1,60 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { useState } from 'react'
-import VideoThumbnail from 'react-video-thumbnail';
 import './App.css'
 import ItemVideo from './component/ItemVideo';
 
 function App() {
-  const [medias, setMedias] = useState<{url: string | undefined, name: string | undefined}[]>([])
+  const [medias, setMedias] = useState<{url: string | undefined, name: string | undefined, thumbnail: string | undefined}[]>([])
   const [url, setUrl] = useState<string>("")
 
   const change = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
       Array.from({length: files.length}).forEach((_, i) => {
-        setMedias(prev => [{name: files.item(i)?.name, url: URL.createObjectURL(files.item(i)!)} , ...prev])
+
+        const videoUrl = URL.createObjectURL(files.item(i)!);
+        const videoElement = document.createElement("video");
+
+        videoElement.src = videoUrl;
+        videoElement.currentTime = 1;
+
+        // setMedias(prev => [{name: files.item(i)?.name, url: videoUrl} , ...prev])
+
+        videoElement.onloadeddata = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = 200; // Largeur du thumbnail
+          canvas.height = 120; // Hauteur du thumbnail
+
+          const ctx = canvas.getContext("2d");
+          if (ctx) {
+            ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            const thumbnail = canvas.toDataURL("image/png");
+
+            // previews.push({ file, thumbnail });
+            // setVideos([...videos, ...previews]);
+
+            setMedias(prev => [{name: files.item(i)?.name, url: videoUrl, thumbnail: thumbnail} , ...prev])
+          }
+
+          URL.revokeObjectURL(videoUrl); // Libérer la mémoire
+        };
       })
     }
   }
+console.log(medias);
 
   return (
     <div className='flex gap-4 w-screen h-screen bg-blue-50'>
-      <aside className='w-[50rem] p-5'>
+      <aside className='w-[50%] p-5'>
         <video className='w-full' controls autoPlay src={url}></video>
       </aside>
 
       <div className='flex flex-col flex-grow p-5'>
         <input id='input-videos' type="file" accept='video/*' hidden multiple onChange={change}/>
         <label className='text-lg w-full cursor-pointer bg-white shadow-lg p-4 rounded-lg' htmlFor='input-videos'>+ Add videos</label>
-        <ul>
+        <ul className="flex flex-col gap-4">
           {
-            medias?.map(media => <ItemVideo media={media}/>)
+            medias?.map(media => <ItemVideo setUrl={setUrl} media={media}/>)
           }
         </ul>
       </div>
