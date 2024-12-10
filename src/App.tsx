@@ -18,14 +18,15 @@ function App() {
   }
 
   return (
-    <div className='flex gap-4 w-screen border'>
-      <aside className='w-[50rem] border border-black p-5'>
+    <div className='flex gap-4 w-screen h-screen bg-blue-50'>
+      <aside className='w-[50rem] p-5'>
         <video className='w-full' controls autoPlay src={url}></video>
       </aside>
 
-      <div>
+      <div className='flex flex-col flex-grow p-5'>
+        <input id='input-videos' type="file" accept='video/*' hidden multiple onChange={change}/>
+        <label className='text-lg w-full cursor-pointer bg-white shadow-lg p-4 rounded-lg' htmlFor='input-videos'>+ Add videos</label>
         <ul>
-
           {
             medias?.map(media => <ItemVideo media={media}/>)
           }

@@ -4,7 +4,7 @@ function ItemVideo({media}: {media: {
 }
 }) {
   return (
-    <div>
+    <div className="">
       
     </div>
   )
