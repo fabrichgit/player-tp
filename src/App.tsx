@@ -44,12 +44,12 @@ function App() {
 console.log(medias);
 
   return (
-    <div className='flex gap-4 w-screen h-screen bg-blue-50'>
+    <div className='flex gap-4 w-screen h-screen bg-blue-50 overflow-hidden'>
       <aside className='w-[50%] p-5'>
         <video className='w-full' controls autoPlay src={url}></video>
       </aside>
 
-      <div className='flex flex-col flex-grow p-5'>
+      <div className='flex flex-col flex-grow gap-4 p-5 h-full overflow-y-auto'>
         <input id='input-videos' type="file" accept='video/*' hidden multiple onChange={change}/>
         <label className='text-lg w-full cursor-pointer bg-white shadow-lg p-4 rounded-lg' htmlFor='input-videos'>+ Add videos</label>
         <ul className="flex flex-col gap-4">

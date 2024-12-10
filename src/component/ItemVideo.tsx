@@ -1,5 +1,3 @@
-import VideoThumbnail from 'react-video-thumbnail';
-
 function ItemVideo({media, setUrl}: {media: {
   url: string | undefined;
   name: string | undefined;
@@ -8,8 +6,9 @@ function ItemVideo({media, setUrl}: {media: {
 setUrl: React.Dispatch<React.SetStateAction<string>>
 }) {
   return (
-    <li className="bg-black h-max">
-      <img src={media.thumbnail} alt="" />
+    <li onClick={() => setUrl(media.url!)} className="flex gap-3 p-3 rounded-lg font-medium cursor-pointer hover:bg-white/60">
+      <img src={media.thumbnail} alt="" className="h-full"/>
+      <p>{media.name}</p>
     </li>
   )
 }
