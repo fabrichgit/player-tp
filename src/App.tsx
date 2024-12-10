@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { useState } from 'react'
+import VideoThumbnail from 'react-video-thumbnail';
 import './App.css'
 
 function App() {
@@ -13,19 +14,25 @@ function App() {
         setMedias(prev => [{name: files.item(i)?.name, url: URL.createObjectURL(files.item(i)!)} , ...prev])
       })
     }
-    
   }
 
   return (
     <>
+   <VideoThumbnail
+      videoUrl={url}
+      thumbnailHandler={(thumbnail: any) => console.log(thumbnail)}
+      width={120}
+      height={80}
+    />
+
     <input type="file" multiple onChange={change}/>
-    <ul>
+    <div className="flex gap-4">
       {
         medias?.map(media => (
           <button onClick={() => setUrl(media.url!)}>{media.name}</button>
         ))
       }
-    </ul>
+    </div>
     {/* <ReactPlayer url={url} /> */}
     <video controls autoPlay src={url}></video>
     </>
