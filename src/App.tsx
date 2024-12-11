@@ -37,12 +37,12 @@ function App() {
   }
 
   return (
-    <div className='flex gap-4 w-screen h-screen bg-blue-50 overflow-hidden'>
-      <aside className='w-[80%] p-5'>
+    <div className='flex flex-col md:flex-row gap-4 w-screen h-screen bg-blue-50 md:overflow-hidden overflow-y-auto'>
+      <aside className='w-full md:w-[80%] p-5'>
         <video className='w-full' controls autoPlay src={url}></video>
       </aside>
 
-      <div className='flex flex-col flex-grow gap-4 p-5 h-full overflow-y-auto'>
+      <div className='flex flex-col flex-grow gap-4 p-5 h-max md:h-full md:overflow-y-auto'>
         <input id='input-videos' type="file" accept='video/*' hidden multiple onChange={change}/>
         <label className='text-lg w-full cursor-pointer bg-white shadow-lg p-4 rounded-lg' htmlFor='input-videos'>+ Add videos</label>
         <ul className="flex flex-col gap-4">
