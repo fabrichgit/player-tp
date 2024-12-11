@@ -1,9 +1,8 @@
 {
-  "name": "elec",
+  "name": "Player",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": ".",
-  "main": "build/electron/main.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
