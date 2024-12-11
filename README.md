@@ -46,7 +46,7 @@ Ce projet permet aux utilisateurs de :
 
 1. **Cloner le dépôt** :
    ```bash
-   git clone https://github.com/votre-utilisateur/video-thumbnails-preview.git
+   git clone https://github.com/tinkererPlayground/player.git
    cd video-thumbnails-preview
    ```
 
