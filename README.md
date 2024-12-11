@@ -1,5 +1,5 @@
 # 🎥 Video Player Preview App
-
+# [demo](https://thumbnails-player.netlify.app/)
 **Une application React avec TypeScript pour sélectionner des vidéos et afficher leurs aperçus (thumbnails).**
 
 ## 📖 Table des matières
