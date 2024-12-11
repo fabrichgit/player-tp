@@ -31,6 +31,7 @@ Ce projet permet aux utilisateurs de :
 - **Génération de thumbnails** : Créez des aperçus à partir des vidéos sélectionnées.
 - **Affichage dynamique** : Affichez les aperçus sous forme de liste avec leurs noms.
 - **Prise en charge des vidéos multiples** : Gère plusieurs fichiers en une seule fois.
+- **Possibilité de lire**
 
 ---
 
@@ -70,7 +71,7 @@ Ce projet permet aux utilisateurs de :
 ---
 
 ## 💡 Utilisation
-1. Ouvrez votre navigateur à l'adresse [http://localhost:3000](http://localhost:3000).
+1. Ouvrez votre navigateur à l'adresse [http://localhost:5173](http://localhost:5173).
 2. Cliquez sur **"Sélectionner des vidéos"** pour importer vos fichiers.
 3. Regardez les **thumbnails générés** dans la galerie !
 
@@ -78,7 +79,7 @@ Ce projet permet aux utilisateurs de :
 
 ## 📸 Capture d'écran
 
-![Capture d'écran de l'application](https://via.placeholder.com/800x400?text=Capture+en+préparation)
+![Capture d'écran de l'application](/public/Screenshot.png)
 
 ---
 
